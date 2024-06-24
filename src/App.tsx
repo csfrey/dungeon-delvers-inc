@@ -6,6 +6,8 @@ import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import { vanilla } from "./constants";
+import TeamBios from "./components/TeamBios";
 
 function App() {
   const theme = createTheme({
@@ -26,7 +28,7 @@ function App() {
       <StickyContainer>
         <Box
           sx={{
-            backgroundColor: "#FFFFFF",
+            backgroundColor: vanilla,
             color: "white",
             fontFamily: "Garamond",
             minHeight: "100vh",
@@ -42,7 +44,7 @@ function App() {
               flexGrow: 1,
             }}
           >
-            <RouterProvider router={router} />
+            <TeamBios />
           </Box>
           <Box>
             <SiteFooter />
