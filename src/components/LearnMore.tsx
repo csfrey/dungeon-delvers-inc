@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import { learnMore, loremipsum, richBlack } from "../constants";
+import { learnMore, richBlack } from "../constants";
 import kyraDane3x5 from "../images/kyra_dane-3x5.jpeg";
 import kyraDane16x9 from "../images/kyra_dane-16x9.jpeg";
 import MediaQuery from "react-responsive";
@@ -34,6 +34,7 @@ const PortraitImage = () => (
         width: "100%",
         objectFit: "cover",
       }}
+      alt="Kyra Dane, Health and Safety Coordinator"
     />
     <Box
       className="image-caption"
@@ -54,6 +55,7 @@ const LandscapeImage = () => (
         width: "80%",
         objectFit: "cover",
       }}
+      alt="Kyra Dane, Health and Safety Coordinator"
     />
     <Box
       className="image-caption"

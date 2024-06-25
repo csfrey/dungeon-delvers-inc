@@ -1,14 +1,12 @@
 import React from "react";
 import { ThemeProvider } from "@emotion/react";
 import { Box, createTheme } from "@mui/material";
-import { StickyContainer } from "react-sticky";
-import "./App.css";
-import { Router, RouterProvider, createBrowserRouter } from "react-router-dom";
-import HeroHeader from "./components/HeroHeader";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SiteFooter from "./components/SiteFooter";
-import { beaver, richBlack, vanilla } from "./constants";
-import TeamBios from "./components/TeamBios";
+import { richBlack, vanilla } from "./constants";
 import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import "./App.css";
 
 function App() {
   const theme = createTheme({
@@ -34,6 +32,10 @@ function App() {
     {
       path: "/",
       element: <HomePage />,
+    },
+    {
+      path: "/about",
+      element: <AboutPage />,
     },
   ]);
 
