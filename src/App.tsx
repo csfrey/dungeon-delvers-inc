@@ -3,54 +3,57 @@ import { ThemeProvider } from "@emotion/react";
 import { Box, createTheme } from "@mui/material";
 import { StickyContainer } from "react-sticky";
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import SiteHeader from "./components/SiteHeader";
+import { Router, RouterProvider, createBrowserRouter } from "react-router-dom";
+import HeroHeader from "./components/HeroHeader";
 import SiteFooter from "./components/SiteFooter";
-import { vanilla } from "./constants";
+import { beaver, richBlack, vanilla } from "./constants";
 import TeamBios from "./components/TeamBios";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const theme = createTheme({
     typography: {
       fontFamily: "Garamond",
     },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: ({ ownerState }) => ({
+            ...(ownerState.variant === "contained" &&
+              ownerState.color === "primary" && {
+                backgroundColor: vanilla,
+                color: richBlack,
+              }),
+          }),
+        },
+      },
+    },
   });
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Box></Box>,
+      element: <HomePage />,
     },
   ]);
 
   return (
     <ThemeProvider theme={theme}>
-      <StickyContainer>
-        <Box
-          sx={{
-            backgroundColor: vanilla,
-            color: "white",
-            fontFamily: "Garamond",
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Box>
-            <SiteHeader />
-          </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-            }}
-          >
-            <TeamBios />
-          </Box>
-          <Box>
-            <SiteFooter />
-          </Box>
+      <Box
+        sx={{
+          backgroundColor: "hsl(52, 62%, 92%)",
+          color: "white",
+          fontFamily: "Garamond",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <RouterProvider router={router} />
+        <Box>
+          <SiteFooter />
         </Box>
-      </StickyContainer>
+      </Box>
     </ThemeProvider>
   );
 }

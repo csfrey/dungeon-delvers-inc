@@ -3,7 +3,7 @@ import hero from "../images/hero.png";
 import { richBlack, startPlayingGames, vanilla } from "../constants";
 import MediaQuery from "react-responsive";
 
-const SiteHeader = () => {
+const HeroHeader = () => {
   const titleContainer = (
     <Box
       className="title-container"
@@ -116,7 +116,13 @@ const SiteHeader = () => {
             fontSize: "calc(40px + 2vw)",
           }}
         >
-          World-class adventuring parties to meet your needs
+          <MediaQuery minWidth={1192}>
+            World-class adventuring parties <br />
+            on demand
+          </MediaQuery>
+          <MediaQuery maxWidth={1191}>
+            World-class adventuring parties on demand
+          </MediaQuery>
         </Box>
         <Box
           sx={{
@@ -130,9 +136,9 @@ const SiteHeader = () => {
               marginTop: "2vw",
               backgroundColor: vanilla,
               color: richBlack,
+              padding: "1.5vw 2vw",
             }}
             variant="contained"
-            size="large"
             href={startPlayingGames}
           >
             Book Now
@@ -143,4 +149,4 @@ const SiteHeader = () => {
   );
 };
 
-export default SiteHeader;
+export default HeroHeader;

@@ -1,12 +1,13 @@
 import { Box } from "@mui/material";
-import { richBlack } from "../constants";
+import { davysGray, richBlack } from "../constants";
 import { TeamBio } from "../types";
-import altheaBlackwood from "../images/althea_blackwood.png";
-import aventisMargeaux from "../images/aventis_margeaux.jpeg";
-import droganIronfist from "../images/drogan_ironfist.jpeg";
-import kethrilStormcaller from "../images/kethril_stormcaller.jpg";
-import lirienSilverleaf from "../images/lirien_silverleaf.png";
+import altheaBlackwood from "../images/althea_blackwood-square.jpeg";
+import aventisMargeaux from "../images/aventis_margeaux-square.jpeg";
+import droganIronfist from "../images/drogan_ironfist-square.jpeg";
+import kethrilStormcaller from "../images/kethril_stormcaller-square.jpg";
+import lirienSilverleaf from "../images/lirien_silverleaf-square.png";
 import Bio from "./Bio";
+import React from "react";
 
 const TeamBios = () => {
   const teamBios: Array<TeamBio> = [
@@ -60,20 +61,33 @@ const TeamBios = () => {
   return (
     <Box
       sx={{
-        padding: "2vh 8vw 0 8vw",
+        padding: "0 16vw",
         color: richBlack,
       }}
     >
       <Box
         sx={{
-          fontSize: "calc(30px + 1vw)",
+          padding: "2vw 0",
+          fontSize: "calc(40px + 1vw)",
           fontStyle: "italic",
+          textAlign: "center",
         }}
       >
         Meet Our Team
       </Box>
       {teamBios.map((bio, i) => (
-        <Bio info={bio} imageOnLeft={i % 2 === 0} />
+        <React.Fragment>
+          <Bio info={bio} imageOnLeft={i % 2 === 0} />
+          {i !== teamBios.length - 1 ? (
+            <Box
+              sx={{
+                backgroundColor: davysGray,
+                height: "2px",
+                margin: "2vw 8vw",
+              }}
+            ></Box>
+          ) : null}
+        </React.Fragment>
       ))}
     </Box>
   );

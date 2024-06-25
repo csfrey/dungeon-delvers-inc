@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import { TeamBio } from "../types";
+import { vanilla } from "../constants";
 
 const Bio = ({
   info,
@@ -8,7 +9,15 @@ const Bio = ({
   info: TeamBio;
   imageOnLeft: boolean;
 }) => {
-  const image = <img src={info.image} />;
+  const image = (
+    <img
+      style={{
+        width: "16vw",
+        height: "16vw",
+      }}
+      src={info.image}
+    />
+  );
   const { name, pronouns, title, stats, description } = info;
 
   return (
@@ -16,22 +25,37 @@ const Bio = ({
       sx={{
         display: "flex",
         flexDirection: "row",
-        marginBottom: "4vh",
       }}
     >
       {imageOnLeft ? image : null}
       <Box
         sx={{
-          padding: "0 2vw",
+          padding: "1vw",
+          margin: "0 1vw",
         }}
       >
         <Box
           sx={{
-            fontSize: "calc(20px + 1vw)",
-            fontStyle: "bold",
+            display: "flex",
           }}
         >
-          {name} ({pronouns})
+          <Box
+            sx={{
+              fontSize: "calc(20px + 1vw)",
+              fontStyle: "bold",
+              marginRight: "0.7vw",
+            }}
+          >
+            {name}
+          </Box>
+          <Box
+            sx={{
+              alignContent: "center",
+              fontSize: "calc(10px + 0.5vw)",
+            }}
+          >
+            ({pronouns})
+          </Box>
         </Box>
         <Box
           sx={{
@@ -48,7 +72,13 @@ const Bio = ({
         >
           {stats}
         </Box>
-        <Box>{description}</Box>
+        <Box
+          sx={{
+            textAlign: "justify",
+          }}
+        >
+          {description}
+        </Box>
       </Box>
       {!imageOnLeft ? image : null}
     </Box>
