@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { TeamBio } from "../types";
-import { vanilla } from "../constants";
+import { richBlack, vanilla } from "../constants";
+import Spacer from "../widgets/Spacer";
 
 const Bio = ({
   info,
@@ -9,78 +10,105 @@ const Bio = ({
   info: TeamBio;
   imageOnLeft: boolean;
 }) => {
-  const image = (
+  const { name, pronouns, title, stats, description, image } = info;
+
+  const spacing = "18px";
+
+  const NameAndPronouns = () => (
+    <Box
+      sx={{
+        display: "flex",
+      }}
+    >
+      <Box
+        sx={{
+          fontSize: "calc(20px + 1vw)",
+          fontStyle: "bold",
+          marginRight: "0.7vw",
+        }}
+      >
+        {name}
+      </Box>
+      <Box
+        sx={{
+          alignContent: "center",
+          fontSize: "calc(10px + 0.5vw)",
+        }}
+      >
+        ({pronouns})
+      </Box>
+    </Box>
+  );
+
+  const Title = () => (
+    <Box
+      sx={{
+        fontSize: "calc(15px + 0.5vw)",
+      }}
+    >
+      {title}
+    </Box>
+  );
+
+  const Stats = () => (
+    <Box
+      sx={{
+        fontStyle: "italic",
+        marginBottom: "1vh",
+      }}
+    >
+      {stats}
+    </Box>
+  );
+
+  const Description = () => (
+    <Box
+      sx={{
+        textAlign: "justify",
+      }}
+    >
+      {description}
+    </Box>
+  );
+
+  const HeadShot = () => (
     <img
       style={{
-        width: "16vw",
-        height: "16vw",
+        width: "35%",
+        height: "auto",
+        objectFit: "cover",
       }}
-      src={info.image}
+      src={image}
     />
   );
-  const { name, pronouns, title, stats, description } = info;
 
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "row",
+        justifyContent: "space-evenly",
+        color: richBlack,
       }}
     >
-      {imageOnLeft ? image : null}
+      {imageOnLeft ? <HeadShot /> : null}
       <Box
+        className="text-stuff"
         sx={{
-          padding: "1vw",
-          margin: "0 1vw",
+          width: "35%",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-          }}
-        >
-          <Box
-            sx={{
-              fontSize: "calc(20px + 1vw)",
-              fontStyle: "bold",
-              marginRight: "0.7vw",
-            }}
-          >
-            {name}
-          </Box>
-          <Box
-            sx={{
-              alignContent: "center",
-              fontSize: "calc(10px + 0.5vw)",
-            }}
-          >
-            ({pronouns})
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            fontSize: "calc(15px + 0.5vw)",
-          }}
-        >
-          {title}
-        </Box>
-        <Box
-          sx={{
-            fontStyle: "italic",
-            marginBottom: "1vh",
-          }}
-        >
-          {stats}
-        </Box>
-        <Box
-          sx={{
-            textAlign: "justify",
-          }}
-        >
-          {description}
-        </Box>
+        <NameAndPronouns />
+        <Spacer s={spacing} />
+        <Title />
+        <Spacer s={spacing} />
+        <Stats />
+        <Spacer s={spacing} />
+        <Description />
       </Box>
-      {!imageOnLeft ? image : null}
+      {!imageOnLeft ? <HeadShot /> : null}
     </Box>
   );
 };

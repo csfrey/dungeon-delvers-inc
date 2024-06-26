@@ -4,22 +4,12 @@ import { TeamBio } from "../types";
 import altheaBlackwood from "../images/althea_blackwood-square.jpeg";
 import aventisMargeaux from "../images/aventis_margeaux-square.jpeg";
 import droganIronfist from "../images/drogan_ironfist-square.jpeg";
-import kethrilStormcaller from "../images/kethril_stormcaller-square.jpg";
 import lirienSilverleaf from "../images/lirien_silverleaf-square.png";
 import Bio from "./Bio";
 import React from "react";
 
-const TeamBios = () => {
+const MeetTheTeam = () => {
   const teamBios: Array<TeamBio> = [
-    {
-      name: "Kethril Stormcaller",
-      pronouns: "he/him",
-      title: "Chief Executive Officer",
-      stats: "Half-Elf, Warlock 20 (Great Old One)",
-      description:
-        "Kethril is the CEO of Dungeon Delvers, Inc., and is responsible for setting the company's strategy and vision. He is a charismatic and enigmatic leader, and his employees both respect and fear him. In addition, he has made a pact with a powerful entity from beyond the stars, and uses his eldritch powers to achieve his goals.",
-      image: kethrilStormcaller,
-    },
     {
       name: "Althea Blackwood",
       pronouns: "she/her",
@@ -61,19 +51,19 @@ const TeamBios = () => {
   return (
     <Box
       sx={{
-        padding: "0 16vw",
+        // padding: "0 16vw",
         color: richBlack,
       }}
     >
       <Box
         sx={{
-          padding: "2vw 0",
+          paddingBottom: "2vw",
           fontSize: "calc(40px + 1vw)",
           fontStyle: "italic",
           textAlign: "center",
         }}
       >
-        Meet Our Team
+        Meet the Team
       </Box>
       {teamBios.map((bio, i) => (
         <React.Fragment>
@@ -83,7 +73,7 @@ const TeamBios = () => {
               sx={{
                 backgroundColor: davysGray,
                 height: "2px",
-                margin: "2vw 8vw",
+                margin: "2vw 16vw",
               }}
             ></Box>
           ) : null}
@@ -93,4 +83,4 @@ const TeamBios = () => {
   );
 };
 
-export default TeamBios;
+export default MeetTheTeam;

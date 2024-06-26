@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   const theme = createTheme({
     typography: {
-      fontFamily: "Garamond",
+      fontFamily: "Raleway",
     },
     components: {
       MuiButton: {
@@ -21,6 +21,9 @@ function App() {
               ownerState.color === "primary" && {
                 backgroundColor: vanilla,
                 color: richBlack,
+                ":hover": {
+                  backgroundColor: "	hsl(52, 62%, 60%)",
+                },
               }),
           }),
         },
@@ -43,12 +46,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          backgroundColor: "hsl(52, 62%, 92%)",
+          backgroundColor: "hsl(52, 62%, 95%)",
           color: "white",
-          fontFamily: "Garamond",
+          fontFamily: "Raleway",
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
+          userSelect: "none",
         }}
       >
         <RouterProvider router={router} />

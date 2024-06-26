@@ -4,8 +4,11 @@ import kyraDane3x5 from "../images/kyra_dane-3x5.jpeg";
 import kyraDane16x9 from "../images/kyra_dane-16x9.jpeg";
 import MediaQuery from "react-responsive";
 import React from "react";
+import ActionButton from "../widgets/ActionButton";
+import Spacer from "../widgets/Spacer";
 
-const minWidth = 1160;
+const breakpoint = 900;
+const spacing = "18px";
 
 const LearnMoreTitle = () => (
   <Box
@@ -18,11 +21,19 @@ const LearnMoreTitle = () => (
   </Box>
 );
 
-const LearnMoreText = () => <Box>{learnMore}</Box>;
+const LearnMoreText = () => (
+  <Box
+    sx={{
+      fontWeight: "bold",
+    }}
+  >
+    {learnMore}
+  </Box>
+);
 
 const LearnMoreButton = () => (
   <Box>
-    <Button variant="contained">Learn More</Button>
+    <ActionButton href="/about">Learn More</ActionButton>
   </Box>
 );
 
@@ -68,14 +79,6 @@ const LandscapeImage = () => (
   </Box>
 );
 
-const Spacer = () => (
-  <Box
-    sx={{
-      flex: "0 0 18px",
-    }}
-  ></Box>
-);
-
 const LearnMore = () => {
   return (
     <Box
@@ -83,7 +86,7 @@ const LearnMore = () => {
         color: richBlack,
       }}
     >
-      <MediaQuery minWidth={minWidth}>
+      <MediaQuery minWidth={breakpoint}>
         <Box
           className="learn-more-section"
           sx={{
@@ -103,9 +106,9 @@ const LearnMore = () => {
             }}
           >
             <LearnMoreTitle />
-            <Spacer />
+            <Spacer s={spacing} />
             <LearnMoreText />
-            <Spacer />
+            <Spacer s={spacing} />
             <LearnMoreButton />
           </Box>
           <Box
@@ -121,22 +124,22 @@ const LearnMore = () => {
           </Box>
         </Box>
       </MediaQuery>
-      <MediaQuery maxWidth={minWidth - 1}>
+      <MediaQuery maxWidth={breakpoint - 1}>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
             textAlign: "center",
-            padding: "4vw 14vw",
+            padding: "4vw 10vw",
           }}
         >
           <LearnMoreTitle />
-          <Spacer />
+          <Spacer s={spacing} />
           <LandscapeImage />
-          <Spacer />
+          <Spacer s={spacing} />
           <LearnMoreText />
-          <Spacer />
+          <Spacer s={spacing} />
           <LearnMoreButton />
         </Box>
       </MediaQuery>
